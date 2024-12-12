@@ -15,14 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Authenticate to Google Cloud
+      - name: cat credentials.json
         run: |
           echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > credentials.json
+          cat credentials.json
+
+      - name: Authenticate to Google Cloud
+        run: |
+          # echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > credentials.json
           gcloud auth activate-service-account --key-file=credentials.json
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
-      - name: Debug credentials.json
-        run: |
-          cat credentials.json
 
       - name: Upload CSV files to GCP Cloud Storage
         run: |
