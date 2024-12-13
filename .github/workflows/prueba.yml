@@ -18,6 +18,11 @@ jobs:
           project_id: ${{secrets.GCP_PROJECT_ID}}
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
 
+      - name: preuba e llaves
+        run: |
+          - echo "${{ secrets.JSON_PRUEBA}}" > prueba.json
+          - cat prueba.json
+
       - name: Upload CSV files to GCP Cloud Storage
         run: |
           for file in $(find . -name '*.csv'); do
