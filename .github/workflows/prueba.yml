@@ -1,39 +1,26 @@
-name: Upload CSV to GCP Cloud Storage
+name: Upload CSV to GCP Bucket
 
 on:
   push:
     branches:
-      - main
-    # paths:
-    #   - "*.csv"
+      - main # Cambia a la rama que desees
 
 jobs:
   upload:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Verificar estado de JSON (para depuración)
-        run: echo "${{ secrets.GCP_CREDENTIALS_JSON }}"
-
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+      - name: Configure GCP Credentials
+        uses: google-github-actions/setup-gcp@v0
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
-
-      - name: Authenticate using service account
-        run: |
-          echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > credentials.json
-          gcloud auth activate-service-account --key-file=credentials.json
-          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Upload CSV files to GCP Cloud Storage
         run: |
           for file in $(find . -name '*.csv'); do
-            gcloud storage cp "$file" gs://test_az/
+            gsutil -m cp "$file" gs://test_az/
           done
       # - name: Upload CSV files to GCP Cloud Storage
       #   run: |
