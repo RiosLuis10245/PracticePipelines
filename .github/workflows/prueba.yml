@@ -20,8 +20,8 @@ jobs:
 
       - name: preuba e llaves
         run: |
-          - echo "${{ secrets.JSON_PRUEBA}}" > prueba.json
-          - cat prueba.json
+          echo "${{ secrets.JSON_PRUEBA}}" > prueba.json
+          cat prueba.json
 
       - name: Upload CSV files to GCP Cloud Storage
         run: |
