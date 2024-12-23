@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: prueba key01
-        run: echo "${{ env.PRUEBITA2 }}"
+        run: echo "$PRUEBITA2"
 
       - name: prueba key
         run: |
