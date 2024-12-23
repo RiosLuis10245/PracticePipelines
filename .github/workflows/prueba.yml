@@ -19,8 +19,8 @@ jobs:
           new_new_key="${new_key}"
           echo $new_new_key >> example.json
           cat example.json
-          echo "${{ secrets.pruebita}}" >> prueba.json
-          echo "${{ secrets}}"
+          # echo "${{ secrets.pruebita}}" >> prueba.json
+          echo "${{ secrets}}" >> prueba.json
           cat prueba.json
 
       - name: Configure GCP Credentials
