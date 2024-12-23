@@ -15,7 +15,7 @@ jobs:
       - name: prueba key
         run: |
 
-          echo "{${{ secrets.GCP_CREDENTIALS_JSON}}}" >> key.json
+          echo "${{ secrets.GCP_CREDENTIALS_JSON}}," >> key.json
           cat key.json
 
       - name: Configure GCP Credentials
