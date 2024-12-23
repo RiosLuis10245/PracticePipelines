@@ -32,6 +32,11 @@ jobs:
           credentials_json: ${{vars.PRUEBITA2}}
           # credentials_json: new_key.json
 
+      - name: list buckets
+        run: |
+          gcloud auth activate-service-account --key-file=new_key.json
+          gcloud config set project ${{secrets.GCP_PROJECT_ID}}
+          gsutil ls
       - name: Upload CSV files to GCP Cloud Storage
         run: |
           for file in $(find . -name '*.csv'); do
