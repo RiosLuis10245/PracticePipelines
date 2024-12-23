@@ -34,7 +34,8 @@ jobs:
 
       - name: list buckets
         run: |
-          gcloud auth activate-service-account --key-file="${{vars.PRUEBITA2}}"
+          echo "${{vars.PRUEBITA2}}" >> prueba.json
+          gcloud auth activate-service-account --key-file=prueba.json
           gcloud config set project ${{secrets.GCP_PROJECT_ID}}
           gsutil ls
       - name: Upload CSV files to GCP Cloud Storage
