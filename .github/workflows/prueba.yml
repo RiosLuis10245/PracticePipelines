@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: holamundo
+        run: echo "MY_SECRET=${{ secrets.pruebita}}" >> $GITHUB_ENV
+
       - name: prueba key
         shell: bash
         env:
