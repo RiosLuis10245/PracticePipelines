@@ -5,7 +5,7 @@ on:
     branches:
       - main # Cambia a la rama que desees
     paths:
-      # - "**.csv" # Solo se activará con cambios en archivos CSV
+      - "**.csv" # Solo se activará con cambios en archivos CSV
 
 jobs:
   upload:
