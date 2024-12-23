@@ -12,17 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: holamundo
-        run: echo "MY_SECRET=${{ secrets.pruebita}}" >> $GITHUB_ENV
-
       - name: prueba key
-        shell: bash
-        env:
-          SUPER_SECRET: ${{ secrets.pruebita }}
-
         run: |
 
-          echo "$SUPER_SECRET" >> prueba.txt
+          echo "${{ secrets.PARSE}}" >> prueba.txt
           cat prueba.txt
           echo "12121" >> ojete.txt
           cat ojete.txt
