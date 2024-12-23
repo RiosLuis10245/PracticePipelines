@@ -23,6 +23,7 @@ jobs:
           cat prueba.txt
           echo "12121" >> ojete.txt
           cat ojete.txt
+          echo "$GITHUB_ENV"
 
       - name: Configure GCP Credentials
         uses: google-github-actions/auth@v2
