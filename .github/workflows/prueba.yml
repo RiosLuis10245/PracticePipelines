@@ -17,8 +17,9 @@ jobs:
 
           echo "${{ secrets.GCP_CREDENTIALS_JSON}},">> key.json
           truncate -s -2 key.json
-          cat key.json
-          echo "{$(cat key.json))}"
+          # cat key.json
+          key="{$(cat key.json)}"
+          echo "$key"
 
       - name: Configure GCP Credentials
         uses: google-github-actions/auth@v2
