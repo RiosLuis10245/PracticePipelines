@@ -18,13 +18,13 @@ jobs:
           echo "${{ secrets.GCP_CREDENTIALS_JSON}},">> key.json
           truncate -s -2 key.json
           cat key.json
-          # echo " { $(cat key.json)) }"
+          echo "{$(cat key.json))}"
 
       - name: Configure GCP Credentials
         uses: google-github-actions/auth@v2
         with:
           project_id: ${{secrets.GCP_PROJECT_ID}}
-          credentials_json: " { $(cat key.json) }"
+          credentials_json: "{$(cat key.json)}"
 
       - name: Upload CSV files to GCP Cloud Storage
         run: |
