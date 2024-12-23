@@ -16,7 +16,7 @@ jobs:
         run: |
 
           echo "${{ secrets.GCP_CREDENTIALS_JSON}},">> key.json
-          truncate -s -10 key.json
+          truncate -s -2 key.json
           cat key.json
           # echo " { $(cat key.json)) }"
 
