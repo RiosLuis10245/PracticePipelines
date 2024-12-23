@@ -12,11 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: prueba key01
+        run: echo "${{ env.PRUEBITA2 }}"
+
       - name: prueba key
         run: |
 
           echo "${{ secrets.GCP_CREDENTIALS_JSON}},">> key.json
-          echo "${{ env.PRUEBITA2 }}"
           truncate -s -2 key.json
           # cat key.json
           key="{$(cat key.json)}"
