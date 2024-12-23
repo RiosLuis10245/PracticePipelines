@@ -12,38 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: prueba key01
-        run: echo "${{ vars.PRUEBITA2 }}"
-
-      - name: prueba key
-        run: |
-
-          echo "${{ secrets.GCP_CREDENTIALS_JSON}},">> key.json
-          truncate -s -2 key.json
-          # cat key.json
-          key="{$(cat key.json)}"
-          echo "$key" >> new_key.json
-          cat new_key.json
-
-      - name: Configure GCP Credentials
-        uses: google-github-actions/auth@v2
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{secrets.GCP_PROJECT_ID}}
-          credentials_json: ${{vars.PRUEBITA2}}
-          # credentials_json: new_key.json
-      - name: Test GCP Authentication
-        run: |
-          gcloud auth list
-          gcloud config list
-          gsutil ls
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_CREDENTIALS_JSON }}
+          export_default_credentials: true
 
-      - name: list buckets
-        run: |
-          echo "${{vars.PRUEBITA2}}" >> prueba.json
-          cat prueba.json
-          gcloud auth activate-service-account --key-file=prueba.json
-          gcloud config set project ${{secrets.GCP_PROJECT_ID}}
-          gsutil ls
       - name: Upload CSV files to GCP Cloud Storage
         run: |
           for file in $(find . -name '*.csv'); do
