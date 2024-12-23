@@ -18,8 +18,11 @@ jobs:
           SUPER_SECRET: ${{ secrets.pruebita }}
 
         run: |
-          echo "$SUPER_SECRET" > prueba.txt
+
+          echo "$SUPER_SECRET" >> prueba.txt
           cat prueba.txt
+          echo "12121" >> ojete.txt
+          cat ojete.txt
 
       - name: Configure GCP Credentials
         uses: google-github-actions/auth@v2
