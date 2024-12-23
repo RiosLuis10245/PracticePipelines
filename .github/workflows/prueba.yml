@@ -15,18 +15,14 @@ jobs:
       - name: prueba key
         run: |
 
-          echo "${{ secrets.PARSE}}" >> prueba.txt
-          cat prueba.txt
-          echo "12121" >> ojete.txt
-          cat ojete.txt
-          echo "$GITHUB_ENV"
-          ls /home/runner/work/_temp/_runner_file_commands/
+          echo "${{ secrets.GCP_CREDENTIALS_JSON}}" >> key.json
+          cat key.json
 
       - name: Configure GCP Credentials
         uses: google-github-actions/auth@v2
         with:
           project_id: ${{secrets.GCP_PROJECT_ID}}
-          credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+          credentials_json: key.json
 
       - name: Upload CSV files to GCP Cloud Storage
         run: |
