@@ -14,11 +14,11 @@ jobs:
 
       - name: preuba e llaves
         run: |
-          new_key=(echo ${{ secrets.pruebita}})
-          echo "$new_key"
-          new_new_key="${new_key}"
-          echo $new_new_key >> example.json
-          cat example.json
+          # new_key=(echo ${{ secrets.pruebita}})
+          # echo "$new_key"
+          # new_new_key="${new_key}"
+          # echo $new_new_key >> example.json
+          # cat example.json
           # echo "${{ secrets.pruebita}}" >> prueba.json
           echo "${{ secrets}}" >> prueba.json
           cat prueba.json
