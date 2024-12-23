@@ -29,7 +29,8 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           project_id: ${{secrets.GCP_PROJECT_ID}}
-          credentials_json: new_key.json
+          credentials_json: ${{vars.PRUEBITA2}}
+          # credentials_json: new_key.json
 
       - name: Upload CSV files to GCP Cloud Storage
         run: |
